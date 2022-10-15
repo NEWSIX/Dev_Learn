@@ -9,7 +9,7 @@
 <body>
     <h1>newsix!</h1><br>NNNN666<br>
     <?php
-    echo"NEWSIX___<br>";
+   /* echo"NEWSIX___<br>";
     print"NEWSIX!"
     ?>
     <input type="button" value="<?php echo"NEWSIX" ?>">
@@ -67,7 +67,7 @@
     echo "<br>b2 : ".$b2."<br> Type : ".gettype($b2);
     echo "<br>b3 : ".$b3."<br> Type : ".gettype($b3);
 
-    echo "<br>";
+    echo "<br>";*/
 echo "<hr>";
     //unset($b3);
     //echo "= :".is_null($b0)."<br>";
@@ -82,5 +82,21 @@ echo "<hr>";
    echo $name."<br><h2>START</h2><br><hr><br>"
 
     ?>
+
+    <?php
+    
+    $c0 = "3";
+    $c1 = 4;
+    $t = 11;
+    var_dump($c0 < $c1);
+    if ($t < "10") {
+        echo "Have a good morning!";
+      } elseif ($t < "20") {
+        echo "Have a good day!";
+      } else {
+        echo "Have a good night!";
+      }
+    ?>
+
 </body>
 </html>
