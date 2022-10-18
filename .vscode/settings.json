@@ -1,3 +1,13 @@
 {
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cSpell.words": [
+        "NEWSIX"
+    ],
+    "files.associations": {
+        "*.ejs": "html",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "__bit_reference": "cpp"
+    }
 }
