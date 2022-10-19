@@ -1,51 +1,43 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 
-namespace HelloWorld
-{
-  class Program
-  {
-    static void Main(string[] args)
-    {
-      /*Console.WriteLine("Hello World! NEWSIX");    
-      Console.WriteLine("Hello World! NEWSIX");
-      int[,] A = {{12,1},{32,90},{32,90}};
-      int i=0 ;
-      
-      foreach(int n in A){
-        i++;
-        Console.WriteLine("\n {0}",n,i);
-     
+namespace AppABC{
+  class main{
+     static void Main(string[] agrs){
+      Feature_A("NEWSIX","Admin","Admin");
+      Feature_A("NITIGON","User","Admin",2);
+    }
+     static void Feature_A(string A = "BKK",string role = "User",string password = "",int song=0){
+      Console.WriteLine("\nUSERNAME :\t"+A);
+      Permission(role,password,song);
+    }  
+     static void Permission(string role , string password , int song){
+      Console.WriteLine("Role\t:\t"+role);
+      if(role == "Admin"){
+        Admin.Ensure(password);
       }
-      Console.WriteLine("\n++++\t{0}\n",A.Length);*/
-    //Console.ReadKey();
-
-    string[][] NEWSIX = new string[3][];
-    NEWSIX[2] = new string[]{"NEW","SIX","NA","JA"};
-    Console.WriteLine("\n{0}\n",NEWSIX[2][1]);
-
+      else if (role == "User"){
+        play.music(song);
+      }
+      
     }
   }
-  class Program2
-  {
-    static void Main(string[] args)
-    {
-      /*Console.WriteLine("Hello World! NEWSIX");    
-      Console.WriteLine("Hello World! NEWSIX");
-      int[,] A = {{12,1},{32,90},{32,90}};
-      int i=0 ;
-      
-      foreach(int n in A){
-        i++;
-        Console.WriteLine("\n {0}",n,i);
-     
-      }
-      Console.WriteLine("\n++++\t{0}\n",A.Length);*/
-    //Console.ReadKey();
-
-    string[][] NEWSIX = new string[3][];
-    NEWSIX[2] = new string[]{"NEW","SIX","NA","JA"};
-    Console.WriteLine("\n{0}\n",NEWSIX[2][1]);
-
+  public class play{
+    public static void music(int song){
+      string[,] list = new string[,] { 
+        {"N1 Band","PopB2" },
+        {"C Band","ROCKaRock"},
+        {"ประยวย","เราจะทำตามสัญญา"}
+      };
+     Console.WriteLine("MUSIC\t:\t{0} by {1}",list[song,1],list[song,0]);
     }
+  }
+  public class Admin{
+    public static void Ensure(string Password){
+      if(Password == "Admin"){
+        Console.WriteLine("Password :\tCorrect!");
+      }
+      else{Console.WriteLine("Password :\tIncorrect!");}
+    } 
   }
 }
