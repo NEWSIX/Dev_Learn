@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿//using Internal;
+using System.Collections.Generic;
 using System;
 
 namespace AppABC{
   class main{
      static void Main(string[] agrs){
-      Feature_A("NEWSIX","Admin","Admin");
-      Feature_A("NITIGON","User","Admin",2);
+      //Feature_A("NEWSIX","Admin","Admin");
+      //Feature_A("NITIGON","User","Admin",2);
+      //AppCDF.main.Main2();
     }
      static void Feature_A(string A = "BKK",string role = "User",string password = "",int song=0){
       Console.WriteLine("\nUSERNAME :\t"+A);
@@ -41,3 +43,6 @@ namespace AppABC{
     } 
   }
 }
+
+
+
