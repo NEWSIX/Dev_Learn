@@ -2,47 +2,29 @@
 using System.Collections.Generic;
 using System;
 
-namespace AppABC{
+
+  struct ValueStr
+  {
+  public int a ;
+  public bool b ;
+  public string c ;  
+  public void SetValue (int A,bool B , string C ){
+    a = A;
+    b = B;
+    c = C;
+  }
+  public void ShowValue (){
+    Console.WriteLine(a);
+    Console.WriteLine(b);
+    Console.WriteLine(c);
+  }
+
+  }
   class main{
-     static void Main(string[] agrs){
-      //Feature_A("NEWSIX","Admin","Admin");
-      //Feature_A("NITIGON","User","Admin",2);
-      //AppCDF.main.Main2();
-    }
-     static void Feature_A(string A = "BKK",string role = "User",string password = "",int song=0){
-      Console.WriteLine("\nUSERNAME :\t"+A);
-      Permission(role,password,song);
-    }  
-     static void Permission(string role , string password , int song){
-      Console.WriteLine("Role\t:\t"+role);
-      if(role == "Admin"){
-        Admin.Ensure(password);
-      }
-      else if (role == "User"){
-        play.music(song);
-      }
-      
+    static void Main(string[] agrs){
+    ValueStr V1 = new ValueStr();
+    V1.SetValue(12,true,"12312s");
+    V1.ShowValue();
+
     }
   }
-  public class play{
-    public static void music(int song){
-      string[,] list = new string[,] { 
-        {"N1 Band","PopB2" },
-        {"C Band","ROCKaRock"},
-        {"ประยวย","เราจะทำตามสัญญา"}
-      };
-     Console.WriteLine("MUSIC\t:\t{0} by {1}",list[song,1],list[song,0]);
-    }
-  }
-  public class Admin{
-    public static void Ensure(string Password){
-      if(Password == "Admin"){
-        Console.WriteLine("Password :\tCorrect!");
-      }
-      else{Console.WriteLine("Password :\tIncorrect!");}
-    } 
-  }
-}
-
-
-
