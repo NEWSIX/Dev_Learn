@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "7w4+SsE2Z/AFpOFfmKQX4R09WV/9OLGp1EYPaHPrjKafXID3KV3/kN8CPF7juvINFzniIzo5QL6JZ8TSr8FZ+g==",
+  "dgSpecHash": "l9Ay6Fk5DhVZWy55M5FHlYYZxfuy/x/tOeBTt/IA4TdwRSou/9iwrd05wHuqL7CP9W9WhhFIxXlkX7j2iJsztg==",
   "success": true,
   "projectFilePath": "/Applications/XAMPP/xamppfiles/htdocs/Dev_Learn/BasicTutorial_C#/OOP/OOP/OOP.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/newisx/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "/Users/newisx/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/Users/newisx/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.29/microsoft.netcore.app.host.osx-x64.3.1.29.nupkg.sha512"
+  ],
   "logs": []
 }

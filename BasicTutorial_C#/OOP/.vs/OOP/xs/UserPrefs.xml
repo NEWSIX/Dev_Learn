@@ -1,16 +1,12 @@
 ﻿<Properties StartupConfiguration="{3467B92A-582B-4EE9-9E1E-18357094C840}|Default">
   <MonoDevelop.Ide.ItemProperties.OOP PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="OOP/Employee.cs">
-    <Files>
-      <File FileName="OOP/Program.cs" Line="11" Column="6" />
-      <File FileName="OOP/Employee.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ActiveDocument="OOP/Program.cs">
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="OOP" expanded="True">
             <Node name="OOP" expanded="True">
-              <Node name="Employee.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
