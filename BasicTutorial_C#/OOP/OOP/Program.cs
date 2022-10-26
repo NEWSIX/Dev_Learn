@@ -8,6 +8,7 @@ namespace OOP
         {
             Employee employee1 = new Employee();
             Console.WriteLine(employee1);
+            Console.WriteLine(employee1);
         }
     }
 }
