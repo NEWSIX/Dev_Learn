@@ -1,10 +1,13 @@
 ﻿using System;
 namespace OOP
 {
-    public class IT
+    public class IT:Employee
     {
-        public IT()
+        private int experience;
+        public IT(string name, int salary, int experience) : base(name, salary)
         {
+            this.experience = experience;
+
         }
     }
 }
