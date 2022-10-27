@@ -7,9 +7,13 @@ namespace OOP
         private string password = "123admin";
         private string token = "321seq";
 
+        public string Username { get => username; set => username = value; }
+        public string Password { get => password; set => password = value; }
+        public string Token { get => token; set => token = value; }
+
         public string Login(string username, string password)
         {
-            if(this.username == username && this.password == password){
+            if(this.Username == username && this.Password == password){
                 return "Result :\tLogin Pass!\n";
             }
             else { return "Result :\tLogin Failed.\n";  }
@@ -17,9 +21,9 @@ namespace OOP
         }
         public string ChangeUsername(string username, string newUsername)
         {
-            if (this.username == username)
+            if (this.Username == username)
             {
-                this.username = newUsername;
+                this.Username = newUsername;
                 return "Result :\tUsername Changed.\n";
             }
             else { return "Result :\tInvalid.\n"; }
@@ -27,9 +31,9 @@ namespace OOP
         }
         public string ChangePassword(string password,string newPassword)
         {
-            if (this.password == password)
+            if (this.Password == password)
             {
-                this.password = newPassword;
+                this.Password = newPassword;
                 return "Result :\tPassword Changed.\n";
             }
             else { return "Result :\tInvalid.\n"; }
@@ -37,10 +41,10 @@ namespace OOP
         }
         public string ChangeUsernameAndPassword(string token,string newUsername, string newPassword)
         {
-            if (this.token == token)
+            if (this.Token == token)
             {
-                this.username = newUsername;
-                this.password = newPassword;
+                this.Username = newUsername;
+                this.Password = newPassword;
                 return "Result :\tUsename and Password have been Changed.\n";
             }
             else { return "Result :\tInvalid.\n"; }
@@ -48,8 +52,9 @@ namespace OOP
         }
         public void ShowDetails()
         {
-            Console.WriteLine(" \t--ShowDetail--\nUSERNAME : \t{0}\nPassword : \t{1}\nToken : \t{2}", this.username, this.password, this.token);
+            Console.WriteLine(" \t--ShowDetail--\nUSERNAME : \t{0}\nPassword : \t{1}\nToken : \t{2}", this.Username, this.Password, this.Token);
         }
 
+        
     }
 }
