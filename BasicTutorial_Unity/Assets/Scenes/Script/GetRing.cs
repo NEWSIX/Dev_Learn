@@ -28,7 +28,7 @@ public class GetRing : MonoBehaviour
     
     private void Start() {
         audioSource = GetComponent<AudioSource>();
-        rndNum = Random.Range(10, 30)*100;
+        rndNum = Random.Range(18, 66)*100;
         audioSource.PlayOneShot(LastRing);
         //rndNum = 300;
         

@@ -7,16 +7,28 @@ public class ExitGame : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.W))
         {
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Application.Quit();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.N))
+        {
+           Application.Quit();
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+           Application.Quit();
+        }
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+           Application.Quit();
+        }
+        if (Input.GetKeyUp(KeyCode.X))
         {
            Application.Quit();
         }
