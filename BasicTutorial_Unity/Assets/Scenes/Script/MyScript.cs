@@ -53,7 +53,7 @@ public class MyScript : MonoBehaviour
     void movePlayer(Vector3 direction)
     {
         //rb.velocity  = direction * speed;
-       // rb.MovePosition(transform.position + direction * speed * Time.deltaTime );
+       //rb.MovePosition(transform.position + direction * speed * Time.deltaTime );
         rb.AddForce(direction * speed);
         
     }
