@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\DerpartmentController;
+use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +27,17 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $users = User::all();
+        //$users = User::all();
+        $users = DB::table('users')->get();
         return view('dashboard',compact('users'));
     })->name('dashboard');
+
+    Route::get('/department/all',[DerpartmentController::class,'index'])->name('department');
+    Route::post('/department/add',[DerpartmentController::class,'store'])->name('addDepartment');
+    
 });
+
+
+
+
+
