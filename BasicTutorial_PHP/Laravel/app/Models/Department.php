@@ -15,6 +15,9 @@ class Department extends Model
         'user_id', 'department_name',
     ];
 
+    public function user(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
     // public function userNaja(){
     //     return $this->hasOne(User::class,'id','user_id');
     // }

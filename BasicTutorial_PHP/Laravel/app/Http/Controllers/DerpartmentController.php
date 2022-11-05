@@ -11,9 +11,14 @@ use Illuminate\Support\Facades\DB;
 class DerpartmentController extends Controller
 {
     public function index(){
+    
+        
+        $department = Department::paginate(5);
+        /*
         $department = DB::table('departments')
         ->join('users','departments.user_id','users.id')
-        ->select('departments.*','users.name')->paginate(2);
+        ->select('departments.*','users.name')->paginate(5);
+        */
         //$department = DB::table('departments')->paginate(2);
         //$department = Department::paginate(3);
        //$department = DB::table('departments')->get();
@@ -21,6 +26,35 @@ class DerpartmentController extends Controller
         return view('Admin.Department.index',compact('department'));
     }
 
+    public function softdelete($id){
+        $department = Department::find($id);
+        $department->delete();
+        return redirect()->route('department')->with('success',"delete --> ".$id);
+    }
+
+    public function edit($id){
+        $department = Department::find($id);
+        return view('Admin.Department.edit',compact('department'));
+    }
+
+    public function update(Request $request , $id){
+        $request->validate([
+            'department_name' => 'required|unique:departments|max:25'
+        ],
+        [
+            'department_name.required'=>'We need infomation!',
+            'department_name.max'=>"We don't need you infomation!",
+            'department_name.unique' => 'Your infomation is useless! '
+        ]);
+        $oldData = Department::find($id)->department_name;
+        $newData = $request->department_name;
+        //dd(Department::find($id)->department_name);
+        $updated = Department::find($id)->update([
+            'department_name' => $request->department_name ,
+            'user_id' => Auth::user()->id ,
+        ]);
+        return redirect()->route('department')->with('success',$oldData." --> ".$newData);
+    }
     public function store(Request $request){
        // dd($request->department_name);
         $request->validate([

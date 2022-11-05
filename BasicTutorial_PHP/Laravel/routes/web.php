@@ -40,6 +40,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
     Route::get('/department/all',[DerpartmentController::class,'index'])->name('department');
     Route::post('/department/add',[DerpartmentController::class,'store'])->name('addDepartment');
+
+    Route::get('department/edit/{id}',[DerpartmentController::class,'edit']);
+    Route::post('department/update/{id}',[DerpartmentController::class,'update']);
+    Route::get('department/softdelete/{id}',[DerpartmentController::class,'softdelete']);
     
 });
 
