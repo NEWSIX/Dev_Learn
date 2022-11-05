@@ -32,12 +32,14 @@ Route::middleware([
         return view('dashboard',compact('users'));
     })->name('dashboard');
 
+    
+    
+});
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+
     Route::get('/department/all',[DerpartmentController::class,'index'])->name('department');
     Route::post('/department/add',[DerpartmentController::class,'store'])->name('addDepartment');
     
 });
-
-
-
-
 

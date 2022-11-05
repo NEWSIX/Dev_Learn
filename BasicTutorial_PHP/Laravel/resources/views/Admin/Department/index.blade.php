@@ -5,10 +5,6 @@
         </h2>
     </x-slot>
 
-    <script>
-
-        
-    </script>
 
 
         <div class="py-12">
@@ -18,6 +14,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             @endif
+
             
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -34,6 +31,37 @@
                                    
                                     <div class="card">
                                         <div class="card-header">TABLE</div>
+                                        
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">User</th>
+                                                <th scope="col">Department</th>
+                                                <th scope="col">Created At</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($department as $dept)
+
+                                                <tr>
+                                                    <th scope="row">{{$department->firstItem()+$loop->index}}</th>
+                                                    <td>{{$dept->name}}</td>
+                                                    <td>{{$dept->department_name}}</td>
+                                                    @if ($dept->created_at == Null)
+                                                        <td>Null</td>
+                                                    @else
+                                                        <td>{{Carbon\Carbon::parse($dept->created_at)->diffForHumans()}}</td>
+                                                    @endif
+                                                </tr>
+
+                                                @endforeach
+                                            </tbody>
+
+                                        </table>
+
+                                        {{$department->links()}}
+
                                     </div>
                                 </div>
 

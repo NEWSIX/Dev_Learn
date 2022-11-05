@@ -14,4 +14,8 @@ class Department extends Model
     protected $fillable = [
         'user_id', 'department_name',
     ];
+
+    // public function userNaja(){
+    //     return $this->hasOne(User::class,'id','user_id');
+    // }
 }

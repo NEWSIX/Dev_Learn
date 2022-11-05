@@ -11,7 +11,14 @@ use Illuminate\Support\Facades\DB;
 class DerpartmentController extends Controller
 {
     public function index(){
-        return view('Admin.Department.index');
+        $department = DB::table('departments')
+        ->join('users','departments.user_id','users.id')
+        ->select('departments.*','users.name')->paginate(2);
+        //$department = DB::table('departments')->paginate(2);
+        //$department = Department::paginate(3);
+       //$department = DB::table('departments')->get();
+        //$department = Department::all();
+        return view('Admin.Department.index',compact('department'));
     }
 
     public function store(Request $request){
