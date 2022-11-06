@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +72,7 @@ class DerpartmentController extends Controller
     $data = array();
     $data["department_name"] = $request->department_name;
     $data["user_id"] = Auth::user()->id;
+    $data["created_at"] = Carbon::now();
     DB::table('departments') -> insert($data);
 
 /*
