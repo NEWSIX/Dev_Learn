@@ -116,6 +116,9 @@ class ServiceController extends Controller
 
 
     public function delete($id){
+        
+        $old_image = Service::find($id)->service_image;
+        @unlink($old_image);
         $service = Service::find($id);
         $service->delete();
         return redirect()->route('service')->with('success',"delete --> ".$service -> service_name);
