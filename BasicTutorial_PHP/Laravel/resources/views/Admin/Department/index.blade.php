@@ -31,48 +31,110 @@
                                     <div class="card">
                                         <div class="card-header">TABLE</div>
                                         
-                                        <table class="table">
-                                            <thead>
-                                              <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">User</th>
-                                                <th scope="col">Department</th>
-                                                <th scope="col">Created At</th>
-                                                <th scope="col">Edit</th>
-                                                <th scope="col">Delete</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($department as $dept)
-
+                                            <table class="table">
+                                                <thead>
                                                 <tr>
-                                                    <th scope="row">{{$department->firstItem()+$loop->index}}</th>
-                                                    <td>{{$dept-> user -> name}}</td>
-                                                    <td>{{$dept->department_name}}</td>
-                                                    @if ($dept->created_at == Null)
-                                                        <td>Null</td>
-                                                    @else
-                                                        <td>{{Carbon\Carbon::parse($dept->created_at)->diffForHumans()}}</td>
-                                                    @endif
-
-
-                                                    <td>
-                                                        <a href="{{url('department/edit/'.$dept->id)}}" class="btn btn-primary">Edit</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{url('department/softdelete/'.$dept->id)}}" class="btn btn-danger">Delete</a>
-                                                    </td>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">User</th>
+                                                    <th scope="col">Department</th>
+                                                    <th scope="col">Created At</th>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"></th>
                                                 </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($department as $dept)
 
-                                                @endforeach
-                                            </tbody>
+                                                    <tr>
+                                                        <th scope="row">{{$department->firstItem()+$loop->index}}</th>
+                                                        <td>{{$dept-> user -> name}}</td>
+                                                        <td>{{$dept->department_name}}</td>
+                                                        @if ($dept->created_at == Null)
+                                                            <td>🤐</td>
+                                                        @else
+                                                            <td>{{Carbon\Carbon::parse($dept->created_at)->diffForHumans()}}</td>
+                                                        @endif
 
-                                        </table>
 
-                                        {{$department->links()}}
+                                                        <td>
+                                                            <a href="{{url('department/edit/'.$dept->id)}}" class="btn btn-primary">Edit</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{url('department/softdelete/'.$dept->id)}}" class="btn btn-danger">Remove</a>
+                                                        </td>
+                                                    </tr>
+
+                                                    @endforeach
+                                                </tbody>
+
+                                            </table>
+
+                                        {{$department->appends(['trashDepartment' => $trashDepartment])->links()}}
 
                                     </div>
+
+<br>
+
+                                    @if (count($trashDepartment) == 0)
+                                      
+                                    @else
+
+                                    
+                                    <div class="card">
+                                        <div class="card-header">Trash</div>
+                                        
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">User</th>
+                                                    <th scope="col">Department</th>
+                                                    <th scope="col">Created At</th>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($trashDepartment as $trashDept)
+
+                                                    <tr>
+                                                        <th scope="row">{{$trashDepartment->firstItem()+$loop->index}}</th>
+                                                        <td>{{$trashDept-> user -> name}}</td>
+                                                        <td>{{$trashDept->department_name}}</td>
+                                                        @if ($trashDept->created_at == Null)
+                                                            <td>🤐</td>
+                                                        @else
+                                                            <td>{{Carbon\Carbon::parse($trashDept->created_at)->diffForHumans()}}</td>
+                                                        @endif
+
+
+                                                        <td>
+                                                            <a href="{{url('department/recovery/'.$trashDept->id)}}" class="btn btn-primary">Recovery</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{url('department/delete/'.$trashDept->id)}}" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+
+                                                    @endforeach
+                                                </tbody>
+
+                                            </table>
+
+                       
+                                        {{$trashDepartment->appends(['department' => $department])->links()}}
+
+                                    </div>
+                                    @endif
+                                    
+                                  
+                                    
                                 </div>
+
+
+
+
+                                
 
                                 <div class="col-md-4">
                                     <div class="card">
@@ -94,6 +156,8 @@
                                             </form>
                                         </div>
                                             
+                                        
+
                                         
 
 

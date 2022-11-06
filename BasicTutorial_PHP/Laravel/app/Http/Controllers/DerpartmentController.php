@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\DB;
 class DerpartmentController extends Controller
 {
     public function index(){
-    
-        
-        $department = Department::paginate(5);
+
+        $department = Department::paginate(5,['*'],'department');
+        $trashDepartment =  Department::onlyTrashed()->paginate(2,['*'],'trashDepartment');
         /*
         $department = DB::table('departments')
         ->join('users','departments.user_id','users.id')
@@ -23,13 +23,14 @@ class DerpartmentController extends Controller
         //$department = Department::paginate(3);
        //$department = DB::table('departments')->get();
         //$department = Department::all();
-        return view('Admin.Department.index',compact('department'));
+        return view('Admin.Department.index',compact('department','trashDepartment'))->with(compact('department','trashDepartment'));
+
     }
 
     public function softdelete($id){
         $department = Department::find($id);
         $department->delete();
-        return redirect()->route('department')->with('success',"delete --> ".$id);
+        return redirect()->route('department')->with('success',"delete --> ".$department -> department_name);
     }
 
     public function edit($id){
@@ -79,6 +80,20 @@ class DerpartmentController extends Controller
 
     $department->save();
 */
-    return redirect()->back()->with('success',"completely!");
+    return redirect()->back()->with('success',"completely! 🥳");
+    }
+
+
+    public function recovery($id){
+        $recover = Department::withTrashed()->find($id);
+        $recover ->restore();
+        return redirect()->back()->with('success',"😷 recover --> ".$recover->department_name);
+
+    }
+    public function delete($id){
+        $recover = Department::withTrashed()->find($id);
+        $recover ->forceDelete();
+        return redirect()->back()->with('success',$recover->department_name."is gone 🥺 ");
+
     }
 }
