@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'FoodMenu.dart';
 
 void main() {
   var app = MyApp();
@@ -27,17 +28,12 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  List<FoodMenu> menu = [
+    FoodMenu("Pizza", "299", "assets/images/pizza.jpeg"),
+    FoodMenu("Hamburger", "89", "assets/images/hamburger.jpeg"),
+    FoodMenu("Fried Chicken", "199", "assets/images/Fried Chicken.webp"),
+    FoodMenu("Spaghetti", "139", "assets/images/spaghetti.jpeg")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +41,22 @@ class _MyHomePageState extends State<MyHomePage>
         appBar: AppBar(
           title: Text("NEWSIX Module1"),
         ),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text("data", style: TextStyle(fontSize: 46, color: Colors.red)),
-            Image(
-                image: NetworkImage(
-                    "https://avatars.githubusercontent.com/u/60424171?v=4")),
-            Text("data",
-                style: TextStyle(
-                    fontSize: 30, color: Color.fromARGB(255, 68, 184, 99))),
-          ],
-        )));
+        body: ListView.builder(
+            itemCount: menu.length,
+            itemBuilder: (BuildContext context, int index) {
+              FoodMenu food = menu[index];
+              return ListTile(
+                leading: Image.asset(food.img),
+                title: Text("Menu ${index + 1} : " + food.name,
+                    style: TextStyle(color: Colors.blue, fontSize: 20)),
+                subtitle: Text(
+                  "Price :" + food.price,
+                  style: TextStyle(color: Colors.green, fontSize: 20),
+                ),
+                onTap: () {
+                  print("Tap :" + food.name);
+                },
+              );
+            }));
   }
 }
