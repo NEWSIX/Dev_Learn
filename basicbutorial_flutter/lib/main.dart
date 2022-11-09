@@ -1,3 +1,5 @@
+import 'package:basicbutorial_flutter/MoneyBox.dart';
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'FoodMenu.dart';
 
@@ -6,7 +8,13 @@ void main() {
   runApp(app);
 }
 
+class _DayNightSwitcher extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MyHomePageState();
+}
+
 class MyApp extends StatelessWidget {
+  bool isDarkModeEnabled = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,199 +35,42 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  bool isDarkModeEnabled = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("NEWSIX Market"),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
+    return MaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark().copyWith(
+        appBarTheme: AppBarTheme(color: Color.fromARGB(255, 63, 115, 38)),
+        scaffoldBackgroundColor: const Color(0xFF15202B),
+      ),
+      themeMode: isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,
+      home: Scaffold(
+        appBar: AppBar(title: Text('NEWSIX')),
+        body: SizedBox.expand(
           child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.max,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                padding: const EdgeInsets.all(20),
-                height: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 26, 82, 16)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "Name",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "Market Cap",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "Price",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.right,
-                      ),
-                    )
-                  ],
-                ),
+              DayNightSwitcher(
+                isDarkModeEnabled: isDarkModeEnabled,
+                onStateChanged: onStateChanged,
               ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                height: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 91, 144, 82)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "BTC",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "1,708 M",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "64,321",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.right,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                height: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 91, 144, 82)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "ETH",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "812 M",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "3,200",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.right,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                height: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 91, 144, 82)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "DOGE",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "539 M",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "999+",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.right,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
+              MoneyBox("Name", "Market_Cap", "Price",
+                  Color.fromARGB(255, 212, 116, 110), 100)
             ],
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  /// Called when the state (day / night) has changed.
+  void onStateChanged(bool isDarkModeEnabled) {
+    setState(() {
+      this.isDarkModeEnabled = isDarkModeEnabled;
+    });
   }
 }
