@@ -1,6 +1,7 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MoneyBox extends StatelessWidget {
   String Name;
@@ -38,11 +39,12 @@ class MoneyBox extends StatelessWidget {
                   fontSize: 20,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.center,
             ),
           ),
           Expanded(
             child: Text(
+              //'${NumberFormat("#,###").format(Price)}',
               Price,
               style: TextStyle(
                   fontSize: 20,
