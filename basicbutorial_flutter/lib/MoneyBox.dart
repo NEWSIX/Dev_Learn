@@ -32,16 +32,16 @@ class MoneyBox extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
-          Expanded(
-            child: Text(
-              Market_Cap,
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-          ),
+          // Expanded(
+          //   child: Text(
+          //     Market_Cap,
+          //     style: TextStyle(
+          //         fontSize: 20,
+          //         color: Colors.white,
+          //         fontWeight: FontWeight.bold),
+          //     textAlign: TextAlign.center,
+          //   ),
+          // ),
           Expanded(
             child: Text(
               //'${NumberFormat("#,###").format(Price)}',
